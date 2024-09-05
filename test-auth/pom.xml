@@ -10,13 +10,6 @@
     <artifactId>test-auth</artifactId>
     <packaging>jar</packaging>
 
-    <name>test-auth</name>
-    <url>http://maven.apache.org</url>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>junit</groupId>

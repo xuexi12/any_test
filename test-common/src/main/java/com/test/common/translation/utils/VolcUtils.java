@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 基于火上引擎翻译
+ * 基于火山引擎翻译
  */
 public class VolcUtils {
     static ITranslateService translateService = TranslateServiceImpl.getInstance();

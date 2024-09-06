@@ -1,12 +1,12 @@
 <script setup>
 import HelloWorld from "./components/HelloWorld.vue";
-import TodoResult from "./components/TodoResult.vue";
+import PostList from "./components/PostList.vue";
 </script>
 
 <template>
   <main class="main">
     <HelloWorld msg="Any Test" />
-    <TodoResult />
+    <PostList />
   </main>
 </template>
 

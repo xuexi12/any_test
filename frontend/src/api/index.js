@@ -5,7 +5,7 @@ const request = async (url, options) => {
   return result;
 };
 
-const origin = "/api";
+const origin = "https://jsonplaceholder.typicode.com";
 const post = (path, data) => {
   const url = `${origin}${path}`;
   const options = {

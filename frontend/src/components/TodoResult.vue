@@ -1,11 +1,11 @@
 <script setup>
-import { onMounted, ref } from "vue"
-const data = ref({})
+import { onMounted, ref } from "vue";
+const data = ref({});
 
 onMounted(async () => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/todos/1")
-  data.value = await res.json()
-})
+  const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+  data.value = await res.json();
+});
 </script>
 
 <template>

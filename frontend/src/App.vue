@@ -1,6 +1,6 @@
 <script setup>
-import HelloWorld from "./components/HelloWorld.vue"
-import TodoResult from "./components/TodoResult.vue"
+import HelloWorld from "./components/HelloWorld.vue";
+import TodoResult from "./components/TodoResult.vue";
 </script>
 
 <template>

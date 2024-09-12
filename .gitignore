@@ -1,3 +1,16 @@
+#java
+.jar
+*.class
+target/
+.mvn/
+.gradle/
+build/
+
+# IDE specific files
+.classpath
+.project
+.settings/
+
 # Logs
 logs
 *.log

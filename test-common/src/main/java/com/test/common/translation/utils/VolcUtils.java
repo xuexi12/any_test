@@ -10,6 +10,7 @@ import org.apache.commons.collections4.ListUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -23,7 +24,6 @@ public class VolcUtils {
         translateService.setAccessKey("ak");
         translateService.setSecretKey("sk");
     }
-
 
     public static List<String> translate(List<String> waitTranslate, String sourceLanguage, String targetLanguage) {
         List<String> translateResult = new ArrayList<>();
@@ -72,16 +72,24 @@ public class VolcUtils {
         return translateResult;
     }
 
-    static void limitTranslate(List<String> translateResult, List<String> translateList, TranslateTextRequest translateTextRequest) throws Exception {
+    static void limitTranslate(List<String> translateResult, List<String> translateList,
+            TranslateTextRequest translateTextRequest) throws Exception {
         if (CollectionUtils.isEmpty(translateList)) {
             return;
         }
 
         translateTextRequest.setTextList(translateList);
         TranslateTextResponse translateText = translateService.translateText(translateTextRequest);
-        translateResult.addAll(translateText.getTranslationList().stream().map(TranslateTextResponse.Translation::getTranslation).toList());
+        translateResult.addAll(translateText.getTranslationList().stream()
+                .map(TranslateTextResponse.Translation::getTranslation).toList());
 
         Thread.sleep(101);
+    }
+
+    public String zh2en(String text) {
+        List<String> input = Collections.singletonList(text);
+        List<String> translated = translate(input, "zh", "en");
+        return translated.get(0);
     }
 
     public static void main(String[] args) {

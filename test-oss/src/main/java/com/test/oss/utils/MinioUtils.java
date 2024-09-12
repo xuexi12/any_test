@@ -16,6 +16,7 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -28,7 +29,9 @@ public class MinioUtils {
 
     private final MinioClient minioClient;
 
-    /******************************  Operate Bucket Start  ******************************/
+    /******************************
+     * Operate Bucket Start
+     ******************************/
 
     /**
      * 启动SpringBoot容器的时候初始化Bucket
@@ -100,10 +103,13 @@ public class MinioUtils {
         minioClient.removeBucket(RemoveBucketArgs.builder().bucket(bucketName).build());
     }
 
-    /******************************  Operate Bucket End  ******************************/
+    /******************************
+     * Operate Bucket End
+     ******************************/
 
-
-    /******************************  Operate Files Start  ******************************/
+    /******************************
+     * Operate Files Start
+     ******************************/
 
     /**
      * 判断文件是否存在
@@ -158,8 +164,8 @@ public class MinioUtils {
      */
     @SneakyThrows(Exception.class)
     public List<Item> getAllObjectsByPrefix(String bucketName,
-                                            String prefix,
-                                            boolean recursive) {
+            String prefix,
+            boolean recursive) {
         List<Item> list = new ArrayList<>();
         Iterable<Result<Item>> objectsIterator = minioClient.listObjects(
                 ListObjectsArgs.builder().bucket(bucketName).prefix(prefix).recursive(recursive).build());
@@ -235,7 +241,8 @@ public class MinioUtils {
      * @return
      */
     @SneakyThrows(Exception.class)
-    public ObjectWriteResponse uploadFile(String bucketName, MultipartFile file, String objectName, String contentType) {
+    public ObjectWriteResponse uploadFile(String bucketName, MultipartFile file, String objectName,
+            String contentType) {
         InputStream inputStream = file.getInputStream();
         return minioClient.putObject(
                 PutObjectArgs.builder()
@@ -258,10 +265,10 @@ public class MinioUtils {
         if (!StringUtils.isEmpty(imageBase64)) {
             InputStream in = base64ToInputStream(imageBase64);
             String newName = System.currentTimeMillis() + "_" + imageName + ".jpg";
-            String year = String.valueOf(new Date().getYear());
-            String month = String.valueOf(new Date().getMonth());
+            LocalDate now = LocalDate.now();
+            String year = String.valueOf(now.getYear());
+            String month = String.format("%02d", now.getMonthValue());
             return uploadFile(bucketName, year + "/" + month + "/" + newName, in);
-
         }
         return null;
     }
@@ -276,7 +283,6 @@ public class MinioUtils {
         }
         return stream;
     }
-
 
     /**
      * 上传本地文件
@@ -327,7 +333,7 @@ public class MinioUtils {
                 PutObjectArgs.builder()
                         .bucket(bucketName)
                         .object(objectName)
-                        .stream(new ByteArrayInputStream(new byte[]{}), 0, -1)
+                        .stream(new ByteArrayInputStream(new byte[] {}), 0, -1)
                         .build());
     }
 
@@ -344,7 +350,8 @@ public class MinioUtils {
                 StatObjectArgs.builder()
                         .bucket(bucketName)
                         .object(objectName)
-                        .build()).toString();
+                        .build())
+                .toString();
     }
 
     /**
@@ -356,7 +363,8 @@ public class MinioUtils {
      * @param srcObjectName 目标文件名
      */
     @SneakyThrows(Exception.class)
-    public ObjectWriteResponse copyFile(String bucketName, String objectName, String srcBucketName, String srcObjectName) {
+    public ObjectWriteResponse copyFile(String bucketName, String objectName, String srcBucketName,
+            String srcObjectName) {
         return minioClient.copyObject(
                 CopyObjectArgs.builder()
                         .source(CopySource.builder().bucket(bucketName).object(objectName).build())
@@ -409,7 +417,8 @@ public class MinioUtils {
      */
     @SneakyThrows(Exception.class)
     public String getPresignedObjectUrl(String bucketName, String objectName, Integer expires) {
-        GetPresignedObjectUrlArgs args = GetPresignedObjectUrlArgs.builder().expiry(expires).bucket(bucketName).object(objectName).build();
+        GetPresignedObjectUrlArgs args = GetPresignedObjectUrlArgs.builder().expiry(expires).bucket(bucketName)
+                .object(objectName).build();
         return minioClient.getPresignedObjectUrl(args);
     }
 

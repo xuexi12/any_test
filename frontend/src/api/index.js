@@ -5,7 +5,9 @@ const request = async (url, options) => {
   return result;
 };
 
-const origin = "https://jsonplaceholder.typicode.com";
+// const origin = "https://jsonplaceholder.typicode.com";
+const origin = "http://localhost:8081";
+
 const post = (path, data) => {
   const url = `${origin}${path}`;
   const options = {
@@ -27,4 +29,4 @@ const get = (path, data) => {
   return request(url, options);
 };
 
-export { post as postApi, get as getApi };
+export { post as postRequest, get as getRequest };

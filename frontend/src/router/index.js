@@ -5,6 +5,10 @@ import XiaBan from "@/views/Xiaban.vue";
 const routes = [
   {
     path: "/",
+    redirect: "/xiaban",
+  },
+  {
+    path: "/home",
     name: "Home",
     component: HelloWorld,
   },
@@ -13,7 +17,6 @@ const routes = [
     name: "XiaBan",
     component: XiaBan,
   },
-  // 在这里添加更多路由...
 ];
 
 const router = createRouter({

@@ -68,21 +68,25 @@ function handleClick() {
 
 <template>
   <div class="container">
-    <p v-if="!isEnded" class="countdown" @click="handleClick">
-      {{ countdown }}
-    </p>
+    <div v-if="!isEnded" class="countdown">
+      <p class="countdown-text" @click="handleClick">{{ countdown }}</p>
+    </div>
     <p v-else class="ended">结束</p>
   </div>
 </template>
 
 <style scoped>
 .container {
+  user-select: none;
   height: 100vh;
   display: flex;
   justify-content: center;
-  padding-top: 100px;
+  padding-top: 20vh;
   font-weight: bold;
   color: #cf5659;
+}
+
+.countdown-text {
   cursor: pointer;
 }
 

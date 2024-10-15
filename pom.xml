@@ -48,21 +48,15 @@
 
             <dependency>
                 <groupId>org.apache.commons</groupId>
-                <artifactId>commons-lang3</artifactId>
-                <version>3.17.0</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.commons</groupId>
                 <artifactId>commons-collections4</artifactId>
                 <version>4.4</version>
             </dependency>
 
-<!--            <dependency>-->
-<!--                <groupId>cn.hutool</groupId>-->
-<!--                <artifactId>hutool-all</artifactId>-->
-<!--                <version>5.8.32</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>5.8.32</version>
+            </dependency>
 
             <dependency>
                 <groupId>com.volcengine</groupId>
@@ -70,17 +64,10 @@
                 <version>1.0.181</version>
             </dependency>
 
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-                <!-- todo 尝试取消无法正确加载依赖 -->
-                <version>3.3.3</version>
-            </dependency>
-
-<!--            <dependency>-->
-<!--                <groupId>org.projectlombok</groupId>-->
-<!--                <artifactId>lombok</artifactId>-->
-<!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>org.projectlombok</groupId>-->
+            <!--                <artifactId>lombok</artifactId>-->
+            <!--            </dependency>-->
 
             <dependency>
                 <groupId>io.minio</groupId>
@@ -92,6 +79,12 @@
                 <groupId>cn.dev33</groupId>
                 <artifactId>sa-token-spring-boot3-starter</artifactId>
                 <version>1.39.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.2.83</version>
             </dependency>
 
         </dependencies>

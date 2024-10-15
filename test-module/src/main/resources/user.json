@@ -1,0 +1,16 @@
+{
+  "id": 12,
+  "name": "John Doe",
+  "age": 30,
+  "address": "address",
+  "email": "john.doe@example.com",
+  "next": [
+    {
+      "id": 12,
+      "name": "John Doe",
+      "age": 30,
+      "address": "address",
+      "email": "john.doe@example.com"
+    }
+  ]
+}

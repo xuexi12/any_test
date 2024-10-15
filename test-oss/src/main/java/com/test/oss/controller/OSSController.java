@@ -1,4 +1,4 @@
-package com.test.module.controller;
+package com.test.oss.controller;
 
 import com.test.oss.config.MinioConfig;
 import com.test.oss.utils.MinioUtils;
